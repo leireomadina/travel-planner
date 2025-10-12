@@ -29,10 +29,6 @@ export default defineConfigWithVueTs(
       'no-unused-vars': 'warn', // warn on unused variables
 
       // Vue 3 rules
-      'vue/max-attributes-per-line': ['error', {
-        singleline: 3,
-        multiline: { max: 1, allowFirstLine: false }
-      }],
       'vue/no-unused-components': 'warn',
       'vue/singleline-html-element-content-newline': 'off',
       'vue/multi-word-component-names': 'off',
@@ -40,8 +36,8 @@ export default defineConfigWithVueTs(
       // TypeScript rules
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
-      '@typescript-eslint/no-unused-vars': 'warn'
-    }
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
   },
 
   // Ignore build, cache, and coverage folders
@@ -51,7 +47,7 @@ export default defineConfigWithVueTs(
     '**/coverage/**',
     '**/node_modules/**',
     '**/.vite/**',
-    '**/.cache/**'
+    '**/.cache/**',
   ]),
 
   // Vue plugin essential config
@@ -62,8 +58,11 @@ export default defineConfigWithVueTs(
   { ...pluginVitest.configs.recommended, files: ['src/**/__tests__/*'] },
 
   // Playwright end-to-end tests
-  { ...pluginPlaywright.configs['flat/recommended'], files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'] },
+  {
+    ...pluginPlaywright.configs['flat/recommended'],
+    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+  },
 
   // Skip Prettier formatting in ESLint to avoid conflicts
-  skipFormatting
+  skipFormatting,
 )
