@@ -15,6 +15,11 @@
     :icon="LucideHome"
     color="lightgreen"
   />
+  <input
+    type="text"
+    placeholder="Type here"
+    class="input mt-4"
+  />
 </template>
 
 <script setup lang="ts">
