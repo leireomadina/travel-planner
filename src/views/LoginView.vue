@@ -48,10 +48,11 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { supabase } from '@/lib/supabase.js'
   import { useRouter } from 'vue-router'
+  import { useAuthStore } from '@/stores/auth'
 
   const router = useRouter()
+  const authStore = useAuthStore()
 
   const userEmail = ref('')
   const userPassword = ref('')
@@ -60,17 +61,10 @@
 
   const loginUser = async () => {
     loginError.value = false
+
     try {
       isLoading.value = true
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: userEmail.value,
-        password: userPassword.value,
-      })
-      // TODO: store user info in Pinia store
-      // data is an object with user and session info objects
-      if (error) {
-        throw error
-      }
+      await authStore.login(userEmail.value, userPassword.value)
       router.push({ name: 'Home' })
     } catch (error) {
       if (error instanceof Error) {

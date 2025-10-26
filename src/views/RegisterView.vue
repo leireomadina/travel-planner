@@ -58,6 +58,7 @@
   const registerError = ref(false)
 
   const registerNewUser = async () => {
+    registerError.value = false
     try {
       isLoading.value = true
       const { error } = await supabase.auth.signUp({
