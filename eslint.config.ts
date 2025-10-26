@@ -34,6 +34,24 @@ export default defineConfigWithVueTs(
           multiline: { max: 1, allowFirstLine: false },
         },
       ],
+      'vue/attributes-order': [
+        'error',
+        {
+          order: [
+            'DEFINITION', // ref, is
+            'LIST_RENDERING', // v-for
+            'CONDITIONALS', // v-if, v-else-if, v-else, v-show
+            'TWO_WAY_BINDING', // v-model
+            'OTHER_DIRECTIVES', // :disabled, :class, :style, v-bind
+            'GLOBAL', // id, key, name
+            'CONTENT', // placeholder, alt, textContent
+            'UNIQUE', // required
+            'OTHER_ATTR', // class, style
+            'EVENTS', // @click, @input
+          ],
+          alphabetical: false,
+        },
+      ],
 
       // Vue 3 rules
       'vue/no-unused-components': 'warn',
@@ -59,6 +77,7 @@ export default defineConfigWithVueTs(
 
   // Vue plugin essential config
   pluginVue.configs['flat/essential'],
+  // TypeScript + Vue recommended from @vue/eslint-config-typescript
   vueTsConfigs.recommended,
 
   // Vitest unit tests
