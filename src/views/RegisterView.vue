@@ -2,7 +2,7 @@
   <h2 class="text-xl text-center">Register</h2>
   <form
     @submit.prevent="registerNewUser"
-    class="max-w-md mx-auto"
+    class="max-w-md mx-auto my-5 px-5"
   >
     <label
       class="input validator block w-full mt-4"
@@ -34,7 +34,7 @@
     </label>
     <button
       type="submit"
-      class="btn btn-neutral btn-wide mt-4"
+      class="btn btn-neutral btn-block mt-4"
     >
       Send
     </button>
