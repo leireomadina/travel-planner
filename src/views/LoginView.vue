@@ -65,7 +65,7 @@
     try {
       isLoading.value = true
       await authStore.login(userEmail.value, userPassword.value)
-      router.push({ name: 'Home' })
+      await router.push({ name: 'Home' })
     } catch (error) {
       if (error instanceof Error) {
         loginError.value = true

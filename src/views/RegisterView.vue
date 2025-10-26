@@ -49,7 +49,9 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { supabase } from '@/lib/supabase.js'
+  import { useAuthStore } from '@/stores/auth'
+
+  const authStore = useAuthStore()
 
   const userEmail = ref('')
   const userPassword = ref('')
@@ -59,15 +61,10 @@
 
   const registerNewUser = async () => {
     registerError.value = false
+
     try {
       isLoading.value = true
-      const { error } = await supabase.auth.signUp({
-        email: userEmail.value,
-        password: userPassword.value,
-      })
-      if (error) {
-        throw error
-      }
+      await authStore.register(userEmail.value, userPassword.value)
       isRegisterSuccessful.value = true
     } catch (error) {
       if (error instanceof Error) {
