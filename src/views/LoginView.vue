@@ -1,8 +1,8 @@
 <template>
   <h2 class="text-xl text-center">Login</h2>
   <form
-    @submit.prevent="loginUser"
     class="max-w-md mx-auto my-5 px-5"
+    @submit.prevent="loginUser"
   >
     <label
       class="input validator block w-full mt-4"
@@ -11,9 +11,10 @@
       Email
       <input
         v-model="userEmail"
+        id="email"
         type="email"
         required
-        id="email"
+        :disabled="isLoading"
         name="email"
         placeholder="Type your email"
       />
@@ -25,18 +26,20 @@
       Password
       <input
         v-model="userPassword"
-        type="password"
         id="password"
+        type="password"
         name="password"
         required
+        :disabled="isLoading"
         placeholder="Type your password"
       />
     </label>
     <button
       type="submit"
       class="btn btn-neutral btn-block mt-4"
+      :disabled="isLoading"
     >
-      Send
+      Sign in
     </button>
   </form>
   <span
