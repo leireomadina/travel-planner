@@ -26,7 +26,14 @@ export default defineConfigWithVueTs(
       'no-debugger': 'error', // prevent debugger statements
       'prefer-const': 'error', // prefer const over let when possible
       eqeqeq: 'error', // enforce strict equality
-      'no-unused-vars': 'warn', // warn on unused variables
+      'no-unused-vars': 'warn', // warn on unused variables,
+      'vue/max-attributes-per-line': [
+        'error',
+        {
+          singleline: 1,
+          multiline: { max: 1, allowFirstLine: false },
+        },
+      ],
 
       // Vue 3 rules
       'vue/no-unused-components': 'warn',
