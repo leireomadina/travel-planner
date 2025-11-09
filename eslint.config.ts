@@ -42,14 +42,20 @@ export default defineConfigWithVueTs(
             'LIST_RENDERING', // v-for
             'CONDITIONALS', // v-if, v-else-if, v-else, v-show
             'TWO_WAY_BINDING', // v-model
-            'OTHER_DIRECTIVES', // :disabled, :class, :style, v-bind
-            'GLOBAL', // id, key, name
-            'CONTENT', // placeholder, alt, textContent
-            'UNIQUE', // required
-            'OTHER_ATTR', // class, style
-            'EVENTS', // @click, @input
+            'ATTR_DYNAMIC', // :icon="Plane", :class="buttonClass"
+            'OTHER_DIRECTIVES', // v-bind:disabled="isDisabled", v-once
+            'GLOBAL', // id="main", key="uniqueKey", name="username"
+            'ATTR_STATIC', // color="lightgreen", type="button"
+            'CONTENT', // placeholder="Enter name", alt="User avatar", textContent
+            'EVENTS', // @click="onClick", @input="onInput"
           ],
           alphabetical: true,
+        },
+      ],
+      'prettier/prettier': [
+        'error',
+        {
+          vueAttributesOrder: 'as-is', // avoids conflict with vue/attributes-order
         },
       ],
 

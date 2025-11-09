@@ -11,12 +11,13 @@
       Email
       <input
         v-model="userEmail"
-        id="email"
-        type="email"
-        required
         :disabled="isLoading"
+        id="email"
+        data-cy="login-email"
         name="email"
         placeholder="Type your email"
+        required
+        type="email"
       />
     </label>
     <label
@@ -26,18 +27,20 @@
       Password
       <input
         v-model="userPassword"
-        id="password"
-        type="password"
-        name="password"
-        required
         :disabled="isLoading"
+        id="password"
+        data-cy="login-password"
+        name="password"
         placeholder="Type your password"
+        required
+        type="password"
       />
     </label>
     <button
-      type="submit"
-      class="btn btn-neutral btn-block mt-4"
       :disabled="isLoading"
+      class="btn btn-neutral btn-block mt-4"
+      data-cy="login-submit"
+      type="submit"
     >
       Sign in
     </button>

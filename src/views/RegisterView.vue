@@ -11,12 +11,13 @@
       Email
       <input
         v-model="userEmail"
-        id="email"
-        type="email"
         :disabled="isLoading"
-        required
+        id="email"
+        data-cy="register-email"
         name="email"
         placeholder="Type your email"
+        required
+        type="email"
       />
     </label>
     <label
@@ -26,18 +27,20 @@
       Password
       <input
         v-model="userPassword"
-        id="password"
-        type="password"
         :disabled="isLoading"
+        id="password"
+        data-cy="register-password"
         name="password"
-        required
         placeholder="Type your password"
+        required
+        type="password"
       />
     </label>
     <button
-      type="submit"
-      class="btn btn-neutral btn-block mt-4"
       :disabled="isLoading"
+      class="btn btn-neutral btn-block mt-4"
+      data-cy="register-submit"
+      type="submit"
     >
       Create a new account
     </button>
@@ -46,8 +49,18 @@
     v-if="isLoading"
     class="loading loading-spinner text-info"
   ></span>
-  <p v-if="isRegisterSuccessful">Check your email to confirm registration.</p>
-  <p v-else-if="registerError">We're sorry, there has been an error. Check again later.</p>
+  <p
+    v-if="isRegisterSuccessful"
+    data-cy="register-successful"
+  >
+    Check your email to confirm registration.
+  </p>
+  <p
+    v-else-if="registerError"
+    data-cy="register-error"
+  >
+    We're sorry, there has been an error. Check again later.
+  </p>
 </template>
 
 <script setup lang="ts">
