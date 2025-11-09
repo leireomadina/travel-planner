@@ -48,6 +48,7 @@
   <span
     v-if="isLoading"
     class="loading loading-spinner text-info"
+    data-cy="loading-spinner"
   ></span>
   <p
     v-if="isRegisterSuccessful"
