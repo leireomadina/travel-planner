@@ -1,5 +1,10 @@
 <template>
-  <h2 class="text-xl text-center">Register</h2>
+  <h2
+    class="text-xl text-center"
+    data-cy="register-title"
+  >
+    Register
+  </h2>
   <form
     class="max-w-md mx-auto my-5 px-5"
     @submit.prevent="registerNewUser"

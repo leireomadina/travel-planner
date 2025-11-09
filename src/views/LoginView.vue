@@ -1,5 +1,10 @@
 <template>
-  <h2 class="text-xl text-center">Login</h2>
+  <h2
+    class="text-xl text-center"
+    data-cy="login-title"
+  >
+    Login
+  </h2>
   <form
     class="max-w-md mx-auto my-5 px-5"
     @submit.prevent="loginUser"
@@ -48,8 +53,14 @@
   <span
     v-if="isLoading"
     class="loading loading-spinner text-info"
+    data-cy="loading-spinner"
   ></span>
-  <p v-if="loginError">We're sorry, but the user or password is incorrect.</p>
+  <p
+    v-if="loginError"
+    data-cy="login-error"
+  >
+    We're sorry, but the user or password is incorrect.
+  </p>
 </template>
 
 <script setup lang="ts">
