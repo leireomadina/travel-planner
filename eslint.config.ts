@@ -49,7 +49,7 @@ export default defineConfigWithVueTs(
             'OTHER_ATTR', // class, style
             'EVENTS', // @click, @input
           ],
-          alphabetical: false,
+          alphabetical: true,
         },
       ],
 
@@ -73,6 +73,7 @@ export default defineConfigWithVueTs(
     '**/node_modules/**',
     '**/.vite/**',
     '**/.cache/**',
+    '**/playwright-report/**',
   ]),
 
   // Vue plugin essential config
