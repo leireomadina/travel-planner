@@ -8,6 +8,5 @@
   "arrowParens": "always",
   "vueIndentScriptAndStyle": true,
   "singleAttributePerLine": true,
-  "plugins": ["prettier-plugin-vue"],
   "vueAttributesOrder": "as-is"
 }
