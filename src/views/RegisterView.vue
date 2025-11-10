@@ -50,11 +50,12 @@
       Create a new account
     </button>
   </form>
-  <span
+  <output
     v-if="isLoading"
+    aria-label="Registering"
     class="loading loading-spinner text-info"
     data-cy="loading-spinner"
-  ></span>
+  ></output>
   <p
     v-if="isRegisterSuccessful"
     data-cy="register-successful"
@@ -63,7 +64,9 @@
   </p>
   <p
     v-else-if="registerError"
+    class="text-red-500"
     data-cy="register-error"
+    role="alert"
   >
     We're sorry, there has been an error. Check again later.
   </p>

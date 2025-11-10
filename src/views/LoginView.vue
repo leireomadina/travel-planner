@@ -50,14 +50,17 @@
       Sign in
     </button>
   </form>
-  <span
+  <output
     v-if="isLoading"
+    aria-label="Logging in"
     class="loading loading-spinner text-info"
     data-cy="loading-spinner"
-  ></span>
+  ></output>
   <p
     v-if="loginError"
+    class="text-red-500 mt-2 block"
     data-cy="login-error"
+    role="alert"
   >
     We're sorry, but the user or password is incorrect.
   </p>
