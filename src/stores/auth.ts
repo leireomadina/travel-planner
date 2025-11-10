@@ -27,6 +27,12 @@ export const useAuthStore = defineStore('auth', () => {
     if (error) throw error
   }
 
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut()
+
+    if (error) throw error
+  }
+
   const setAuthData = (data: { user: User | null; session: Session | null }) => {
     user.value = data?.user ?? null
     session.value = data?.session ?? null
@@ -37,5 +43,6 @@ export const useAuthStore = defineStore('auth', () => {
     session,
     login,
     register,
+    logout,
   }
 })
