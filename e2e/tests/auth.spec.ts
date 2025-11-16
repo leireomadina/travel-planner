@@ -1,9 +1,12 @@
 import { test, expect } from '@playwright/test'
 import { ROUTES, API_ENDPOINTS, TEST_USER } from '../data/test-data.js'
 
+const simulatedNetworkDelayInMs = 100
+
 test('should successfully register a new user (mocked)', async ({ page }) => {
-  await page.route(API_ENDPOINTS.register, (route) => {
-    route.fulfill({
+  await page.route(API_ENDPOINTS.register, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, simulatedNetworkDelayInMs))
+    await route.fulfill({
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({
@@ -30,8 +33,9 @@ test('should successfully register a new user (mocked)', async ({ page }) => {
 })
 
 test('should successfully log in an existing user (mocked)', async ({ page }) => {
-  await page.route(API_ENDPOINTS.login, (route) => {
-    route.fulfill({
+  await page.route(API_ENDPOINTS.login, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, simulatedNetworkDelayInMs))
+    await route.fulfill({
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify({
