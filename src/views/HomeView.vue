@@ -3,19 +3,17 @@
     <h2>Home</h2>
     <button
       :disabled="isLoading"
-      class="btn btn-neutral mt-4"
+      class="btn btn-neutral mt-4 mb-2"
       data-cy="logout-submit"
       type="button"
       @click="logOutUser"
     >
       {{ isLoading ? 'Logging out…' : 'Log out' }}
     </button>
-    <output
+    <loading-spinner
       v-if="isLoading"
-      aria-label="Logging out"
-      class="loading loading-spinner text-info mt-2 block"
-      data-cy="loading-spinner"
-    ></output>
+      ariaLabel="Logging out"
+    />
     <p
       v-if="logoutError"
       class="text-red-500 mt-2 block"
@@ -31,6 +29,7 @@
   import { useAuthStore } from '@/stores/auth'
   import { useRouter } from 'vue-router'
   import { ref } from 'vue'
+  import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
   const authStore = useAuthStore()
   const router = useRouter()

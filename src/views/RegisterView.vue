@@ -50,14 +50,12 @@
       Create a new account
     </button>
   </form>
-  <output
+  <loading-spinner
     v-if="isLoading"
-    aria-label="Registering"
-    class="loading loading-spinner text-info"
-    data-cy="loading-spinner"
-  ></output>
+    ariaLabel="Registering"
+  />
   <p
-    v-if="isRegisterSuccessful"
+    v-else-if="isRegisterSuccessful"
     data-cy="register-successful"
   >
     Check your email to confirm registration.
@@ -75,6 +73,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useAuthStore } from '@/stores/auth'
+  import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
   const authStore = useAuthStore()
 
