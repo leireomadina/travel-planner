@@ -49,6 +49,13 @@
     >
       Sign in
     </button>
+    <router-link
+      :to="{ name: 'RecoverPassword' }"
+      class="btn btn-link mt-3 pl-0"
+      data-cy="forgot-password"
+    >
+      Forgot password?
+    </router-link>
   </form>
   <loading-spinner
     v-if="isLoading"
