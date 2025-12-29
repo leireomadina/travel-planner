@@ -1,6 +1,7 @@
 <template>
   <div class="p-4">
     <h2>Home</h2>
+    <p>{{ $t('hello') }}</p>
     <button
       :disabled="isLoading"
       class="btn btn-neutral mt-4 mb-2"
