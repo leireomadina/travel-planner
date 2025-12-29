@@ -50,12 +50,10 @@
       Sign in
     </button>
   </form>
-  <output
+  <loading-spinner
     v-if="isLoading"
-    aria-label="Logging in"
-    class="loading loading-spinner text-info"
-    data-cy="loading-spinner"
-  ></output>
+    ariaLabel="Logging in"
+  />
   <p
     v-if="loginError"
     class="text-red-500 mt-2 block"
@@ -70,6 +68,7 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useAuthStore } from '@/stores/auth'
+  import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
   const router = useRouter()
   const authStore = useAuthStore()
