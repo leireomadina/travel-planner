@@ -20,10 +20,10 @@ test('should successfully register a new user (mocked)', async ({ page }) => {
 
   await expect(page.locator('[data-cy="register-title"]')).toBeVisible()
 
-  await page.fill('[data-cy="register-email"]', TEST_USER.email)
-  await page.fill('[data-cy="register-password"]', TEST_USER.password)
+  await page.locator('[data-cy="register-email"]').fill(TEST_USER.email)
+  await page.locator('[data-cy="register-password"]').fill(TEST_USER.password)
 
-  await page.click('[data-cy="register-submit"]')
+  await page.locator('[data-cy="register-submit"]').click()
 
   await page.locator('[data-cy="loading-spinner"]').waitFor({ state: 'visible' })
   await page.locator('[data-cy="loading-spinner"]').waitFor({ state: 'hidden' })
@@ -56,10 +56,10 @@ test('should successfully log in an existing user (mocked)', async ({ page }) =>
 
   await expect(page.locator('[data-cy="login-title"]')).toBeVisible()
 
-  await page.fill('[data-cy="login-email"]', TEST_USER.email)
-  await page.fill('[data-cy="login-password"]', TEST_USER.password)
+  await page.locator('[data-cy="login-email"]').fill(TEST_USER.email)
+  await page.locator('[data-cy="login-password"]').fill(TEST_USER.password)
 
-  await page.click('[data-cy="login-submit"]')
+  await page.locator('[data-cy="login-submit"]').click()
 
   await page.locator('[data-cy="loading-spinner"]').waitFor({ state: 'visible' })
   await page.locator('[data-cy="loading-spinner"]').waitFor({ state: 'hidden' })
