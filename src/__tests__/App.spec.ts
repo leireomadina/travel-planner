@@ -5,7 +5,14 @@ import App from '../App.vue'
 
 describe('App', () => {
   it('renders properly', () => {
-    const wrapper = mount(App)
+    const wrapper = mount(App, {
+      global: {
+        stubs: {
+          'router-view': true,
+          'router-link': true,
+        },
+      },
+    })
     expect(wrapper.text()).toContain('Travel planner')
   })
 })
