@@ -21,22 +21,22 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.101.1",
+    "@supabase/supabase-js": "^2.103.0",
     "@tailwindcss/vite": "^4.2.2",
     "lucide-vue-next": "^1.0.0",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.2.2",
     "vue": "^3.5.32",
-    "vue-i18n": "^11.3.1",
+    "vue-i18n": "^11.3.2",
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
     "@tsconfig/node22": "^22.0.5",
     "@types/jsdom": "^28.0.1",
-    "@types/node": "^25.5.2",
+    "@types/node": "^25.6.0",
     "@vitejs/plugin-vue": "^6.0.5",
-    "@vitest/eslint-plugin": "^1.6.14",
+    "@vitest/eslint-plugin": "^1.6.15",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.7.0",
     "@vue/test-utils": "^2.4.6",
@@ -47,13 +47,13 @@
     "eslint-plugin-vue": "~10.8.0",
     "husky": "^9.1.7",
     "jiti": "^2.6.1",
-    "jsdom": "^29.0.1",
+    "jsdom": "^29.0.2",
     "npm-run-all2": "^8.0.4",
     "prettier": "3.8.1",
     "typescript": "~6.0.2",
-    "vite": "^8.0.5",
+    "vite": "^8.0.8",
     "vite-plugin-vue-devtools": "^8.1.1",
-    "vitest": "^4.1.2",
+    "vitest": "^4.1.4",
     "vue-tsc": "^3.2.6"
   }
 }
