@@ -10,7 +10,7 @@
   defineProps({
     icon: {
       // Lucide icon component
-      type: Object,
+      type: Function,
       required: true,
     },
     size: {
