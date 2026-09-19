@@ -9,6 +9,9 @@ jobs:
     strategy:
       matrix:
         node-version: [ 22 ]
+    env:
+      NUXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+      NUXT_PUBLIC_SUPABASE_KEY: placeholder-anon-key
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
