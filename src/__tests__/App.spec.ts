@@ -5,7 +5,14 @@ import App from '../app.vue'
 
 describe('App', () => {
   it('renders properly', () => {
-    const wrapper = mount(App)
+    const wrapper = mount(App, {
+      global: {
+        stubs: {
+          NuxtPage: true,
+        },
+      },
+    })
     expect(wrapper.text()).toContain('Travel planner')
+    expect(wrapper.find('h1').text()).toBe('Travel planner')
   })
 })

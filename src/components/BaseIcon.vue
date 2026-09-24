@@ -9,8 +9,8 @@
 <script setup lang="ts">
   defineProps({
     icon: {
-      // Lucide icon component
-      type: Object,
+      // Lucide icon component (can be Object or Function)
+      type: [Object, Function] as unknown as () => object,
       required: true,
     },
     size: {
