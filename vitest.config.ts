@@ -1,14 +1,25 @@
-import { fileURLToPath } from 'node:url'
-import { mergeConfig, defineConfig, configDefaults } from 'vitest/config'
-import viteConfig from './vite.config'
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
-    test: {
-      environment: 'jsdom',
-      exclude: [...configDefaults.exclude, 'e2e/**'],
-      root: fileURLToPath(new URL('./', import.meta.url)),
+export default defineVitestConfig({
+  test: {
+    // Runs tests inside a Nuxt app, so auto-imports, plugins and modules are available
+    environment: 'nuxt',
+    environmentOptions: {
+      nuxt: {
+        domEnvironment: 'jsdom',
+        // Placeholder credentials so the Supabase plugin can start; tests mock any network calls
+        overrides: {
+          runtimeConfig: {
+            public: {
+              supabase: {
+                url: 'https://placeholder.supabase.co',
+                key: 'placeholder-key',
+              },
+            },
+          },
+        },
+      },
     },
-  }),
-)
+    exclude: ['e2e/**', '**/node_modules/**'],
+  },
+})

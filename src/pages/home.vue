@@ -4,7 +4,7 @@
     <p>{{ $t('hello') }}</p>
     <button
       :disabled="isLoading"
-      class="btn btn-neutral mt-4 mb-2"
+      class="mt-4 mb-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
       data-cy="logout-submit"
       type="button"
       @click="logOutUser"
@@ -27,10 +27,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useAuthStore } from '@/stores/auth'
-  import { useRouter } from 'vue-router'
-  import { ref } from 'vue'
-  import LoadingSpinner from '@/components/LoadingSpinner.vue'
+  definePageMeta({ name: 'Home' })
 
   const authStore = useAuthStore()
   const router = useRouter()

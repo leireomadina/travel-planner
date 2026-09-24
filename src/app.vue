@@ -6,10 +6,9 @@
     />
     <h1>Travel planner</h1>
   </header>
-  <router-view></router-view>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">
-  import BaseIcon from '@/components/BaseIcon.vue'
   import { Plane } from 'lucide-vue-next'
 </script>

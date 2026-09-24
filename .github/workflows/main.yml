@@ -2,9 +2,12 @@ name: Application testing
 on:
   push:
   workflow_dispatch:
+env:
+  NUXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+  NUXT_PUBLIC_SUPABASE_KEY: placeholder-anon-key
 jobs:
   unit-tests:
-    name: Unit tests
+    name: Lint, unit tests and build
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -13,10 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Uses the pnpm version pinned in package.json's "packageManager" field
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -27,8 +29,52 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run lint
+        run: pnpm exec eslint .
+
+      - name: Check formatting
+        run: pnpm exec prettier --check src/
+
       - name: Run unit tests
         run: pnpm test:unit
 
       - name: Run build
         run: pnpm build
+
+  e2e-tests:
+    name: End-to-end tests
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [ 22 ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Uses the pnpm version pinned in package.json's "packageManager" field
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      # Playwright builds the app and serves it with `pnpm preview` when CI is set
+      - name: Run end-to-end tests
+        run: pnpm test:e2e --project=chromium
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
