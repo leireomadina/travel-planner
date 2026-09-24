@@ -1,17 +1,25 @@
-import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vitest/config'
-import vue from '@vitejs/plugin-vue'
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
-export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
+export default defineVitestConfig({
   test: {
-    environment: 'jsdom',
+    // Runs tests inside a Nuxt app, so auto-imports, plugins and modules are available
+    environment: 'nuxt',
+    environmentOptions: {
+      nuxt: {
+        domEnvironment: 'jsdom',
+        // Placeholder credentials so the Supabase plugin can start; tests mock any network calls
+        overrides: {
+          runtimeConfig: {
+            public: {
+              supabase: {
+                url: 'https://placeholder.supabase.co',
+                key: 'placeholder-key',
+              },
+            },
+          },
+        },
+      },
+    },
     exclude: ['e2e/**', '**/node_modules/**'],
-    root: fileURLToPath(new URL('./', import.meta.url)),
   },
 })

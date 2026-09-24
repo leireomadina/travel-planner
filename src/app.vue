@@ -10,6 +10,5 @@
 </template>
 
 <script setup lang="ts">
-  import BaseIcon from '@/components/BaseIcon.vue'
   import { Plane } from 'lucide-vue-next'
 </script>

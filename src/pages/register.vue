@@ -55,9 +55,11 @@
   <loading-spinner
     v-if="isLoading"
     ariaLabel="Registering"
+    class="mx-auto"
   />
   <p
     v-else-if="isRegisterSuccessful"
+    class="text-center"
     data-cy="register-successful"
   >
     Check your email to confirm registration.
@@ -73,10 +75,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useAuthStore } from '@/stores/auth'
-  import LoadingSpinner from '@/components/LoadingSpinner.vue'
-
   definePageMeta({ name: 'Register' })
 
   const authStore = useAuthStore()

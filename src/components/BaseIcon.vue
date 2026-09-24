@@ -7,10 +7,12 @@
 </template>
 
 <script setup lang="ts">
+  import type { Component, PropType } from 'vue'
+
   defineProps({
     icon: {
       // Lucide icon component (can be Object or Function)
-      type: [Object, Function] as unknown as () => object,
+      type: [Object, Function] as PropType<Component>,
       required: true,
     },
     size: {

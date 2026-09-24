@@ -1,21 +1,16 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
-import type { User, Session } from '@supabase/supabase-js'
-
 export const useAuthStore = defineStore('auth', () => {
   const supabase = useSupabaseClient()
-  const user = ref<User | null>(null)
-  const session = ref<Session | null>(null)
+  // Kept in sync by @nuxtjs/supabase on login, logout, token refresh and page reload
+  const user = useSupabaseUser()
+  const session = useSupabaseSession()
 
   const login = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
     if (error) throw error
-
-    setAuthData(data)
   }
 
   const register = async (email: string, password: string) => {
@@ -31,11 +26,6 @@ export const useAuthStore = defineStore('auth', () => {
     const { error } = await supabase.auth.signOut()
 
     if (error) throw error
-  }
-
-  const setAuthData = (data: { user: User | null; session: Session | null }) => {
-    user.value = data?.user ?? null
-    session.value = data?.session ?? null
   }
 
   return {

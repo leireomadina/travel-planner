@@ -55,6 +55,7 @@
   <loading-spinner
     v-if="isLoading"
     ariaLabel="Logging in"
+    class="mx-auto"
   />
   <p
     v-if="loginError"
@@ -67,10 +68,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useAuthStore } from '@/stores/auth'
-  import LoadingSpinner from '@/components/LoadingSpinner.vue'
-
   definePageMeta({ name: 'Login' })
 
   const router = useRouter()

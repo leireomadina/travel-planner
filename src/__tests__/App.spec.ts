@@ -1,18 +1,11 @@
 import { describe, it, expect } from 'vitest'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 
-import { mount } from '@vue/test-utils'
 import App from '../app.vue'
 
 describe('App', () => {
-  it('renders properly', () => {
-    const wrapper = mount(App, {
-      global: {
-        stubs: {
-          NuxtPage: true,
-        },
-      },
-    })
-    expect(wrapper.text()).toContain('Travel planner')
+  it('renders properly', async () => {
+    const wrapper = await mountSuspended(App)
     expect(wrapper.find('h1').text()).toBe('Travel planner')
   })
 })
