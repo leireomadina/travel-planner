@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Travel planner',
-      link: [{ rel: 'icon', href: '/favicon.ico' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
   modules: ['@nuxtjs/supabase', '@pinia/nuxt'],

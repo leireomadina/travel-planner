@@ -2,7 +2,7 @@
   <header class="flex items-center gap-2 my-5 px-5 text-center text-xl">
     <BaseIcon
       :icon="Plane"
-      color="lightgreen"
+      color="#a21caf"
     />
     <h1>Travel planner</h1>
   </header>
