@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { ROUTES, TEST_USER } from '../data/test-data.js'
-import { mockLogin, mockRegister } from '../data/mocks.js'
+import { ROUTES, TEST_USER } from './data/test-data.js'
+import { mockLogin, mockRegister } from './data/mocks.js'
 
 const simulatedNetworkDelayInMs = 100
 

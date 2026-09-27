@@ -92,12 +92,12 @@ export default defineConfigWithVueTs(
   { rules: { 'vue/multi-word-component-names': 'off' } },
 
   // Vitest unit tests
-  { ...pluginVitest.configs.recommended, files: ['src/**/__tests__/*'] },
+  { ...pluginVitest.configs.recommended, files: ['test/{unit,nuxt}/**/*.{test,spec}.ts'] },
 
   // Playwright end-to-end tests
   {
     ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+    files: ['test/e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },
 
   // Skip Prettier formatting in ESLint to avoid conflicts

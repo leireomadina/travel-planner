@@ -28,9 +28,11 @@ src/
 ├── stores/        # Auto-imported Pinia stores
 ├── plugins/       # Nuxt plugins (i18n)
 ├── locales/       # Translation files
-├── assets/css/    # Tailwind entry point
-└── __tests__/     # Unit tests
-e2e/               # Playwright tests
+└── assets/css/    # Tailwind entry point
+test/
+├── unit/          # Vitest tests for pure logic (Node, no Nuxt runtime)
+├── nuxt/          # Vitest tests that need Nuxt (components, pages, composables)
+└── e2e/           # Playwright tests
 ```
 
 Components, stores, Vue APIs (`ref`, `computed`…) and Nuxt composables are auto-imported, so you don't need to import them manually.
@@ -79,7 +81,15 @@ pnpm preview
 pnpm test:unit
 ```
 
-Tests run inside a Nuxt environment, so auto-imports, plugins and modules work. Use `mountSuspended` from `@nuxt/test-utils/runtime` to mount components and pages.
+Vitest runs two projects:
+
+- `unit` (`test/unit/`) runs in plain Node. Use it for pure logic that doesn't need Nuxt; it's the fastest.
+- `nuxt` (`test/nuxt/`) runs inside a Nuxt environment, so auto-imports, plugins and modules work. Use `mountSuspended` from `@nuxt/test-utils/runtime` to mount components and pages.
+
+```sh
+# Runs only one project
+pnpm test:unit --project nuxt
+```
 
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
@@ -92,7 +102,7 @@ pnpm test:e2e
 # Runs the tests only on Chromium
 pnpm test:e2e --project=chromium
 # Runs the tests of a specific file
-pnpm test:e2e e2e/tests/auth.spec.ts
+pnpm test:e2e test/e2e/auth.spec.ts
 # Runs the tests in debug mode
 pnpm test:e2e --debug
 ```

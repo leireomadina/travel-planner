@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { ROUTES, TEST_USER } from '../data/test-data.js'
-import { mockLogin } from '../data/mocks.js'
+import { ROUTES, TEST_USER } from './data/test-data.js'
+import { mockLogin } from './data/mocks.js'
 
 test('redirects to the login page when not logged in', async ({ page }) => {
   await page.goto(ROUTES.home)

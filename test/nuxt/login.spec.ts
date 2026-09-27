@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 
-import LoginPage from '../pages/login.vue'
+import LoginPage from '~/pages/login.vue'
 
 describe('Login page', () => {
   it('renders the login form', async () => {

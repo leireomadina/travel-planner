@@ -33,7 +33,7 @@ jobs:
         run: pnpm exec eslint .
 
       - name: Check formatting
-        run: pnpm exec prettier --check src/
+        run: pnpm exec prettier --check src/ test/
 
       - name: Run unit tests
         run: pnpm test:unit
