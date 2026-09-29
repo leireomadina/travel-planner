@@ -2,14 +2,13 @@
   <header class="flex items-center gap-2 my-5 px-5 text-center text-xl">
     <BaseIcon
       :icon="Plane"
-      color="lightgreen"
+      color="#a21caf"
     />
     <h1>Travel planner</h1>
   </header>
-  <router-view></router-view>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">
-  import BaseIcon from '@/components/BaseIcon.vue'
   import { Plane } from 'lucide-vue-next'
 </script>

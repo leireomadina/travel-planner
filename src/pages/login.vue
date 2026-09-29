@@ -10,7 +10,7 @@
     @submit.prevent="loginUser"
   >
     <label
-      class="input validator block w-full mt-4"
+      class="block w-full mt-4 text-sm font-medium text-black"
       for="email"
     >
       Email
@@ -18,6 +18,7 @@
         v-model="userEmail"
         :disabled="isLoading"
         id="email"
+        class="mt-1 block w-full border border-black rounded px-3 py-2 bg-white text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-black disabled:opacity-50"
         data-cy="login-email"
         name="email"
         placeholder="Type your email"
@@ -26,7 +27,7 @@
       />
     </label>
     <label
-      class="input validator block w-full mt-4"
+      class="block w-full mt-4 text-sm font-medium text-black"
       for="password"
     >
       Password
@@ -34,6 +35,7 @@
         v-model="userPassword"
         :disabled="isLoading"
         id="password"
+        class="mt-1 block w-full border border-black rounded px-3 py-2 bg-white text-black placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-black disabled:opacity-50"
         data-cy="login-password"
         name="password"
         placeholder="Type your password"
@@ -43,7 +45,7 @@
     </label>
     <button
       :disabled="isLoading"
-      class="btn btn-neutral btn-block mt-4"
+      class="w-full mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
       data-cy="login-submit"
       type="submit"
     >
@@ -53,10 +55,11 @@
   <loading-spinner
     v-if="isLoading"
     ariaLabel="Logging in"
+    class="mx-auto"
   />
   <p
     v-if="loginError"
-    class="text-red-500 mt-2 block"
+    class="text-red-500 mt-2 block text-center"
     data-cy="login-error"
     role="alert"
   >
@@ -65,10 +68,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useRouter } from 'vue-router'
-  import { useAuthStore } from '@/stores/auth'
-  import LoadingSpinner from '@/components/LoadingSpinner.vue'
+  definePageMeta({ name: 'Login' })
 
   const router = useRouter()
   const authStore = useAuthStore()

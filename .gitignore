@@ -81,6 +81,7 @@ jspm_packages/
 # Other frameworks (just in case)
 .next/
 .nuxt/
+.output/
 .vuepress/dist/
 .temp/
 .svelte-kit/

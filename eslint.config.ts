@@ -13,7 +13,7 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 export default defineConfigWithVueTs(
   {
     name: 'travel-planner',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    files: ['**/*.{ts,mts,tsx,vue}', 'nuxt.config.ts'],
 
     // Global ESLint rules
     rules: {
@@ -62,7 +62,6 @@ export default defineConfigWithVueTs(
       // Vue 3 rules
       'vue/no-unused-components': 'warn',
       'vue/singleline-html-element-content-newline': 'off',
-      'vue/multi-word-component-names': 'off',
 
       // TypeScript rules
       '@typescript-eslint/no-explicit-any': 'warn',
@@ -77,6 +76,8 @@ export default defineConfigWithVueTs(
     '**/dist-ssr/**',
     '**/coverage/**',
     '**/node_modules/**',
+    '**/.nuxt/**',
+    '**/.output/**',
     '**/.vite/**',
     '**/.cache/**',
     '**/playwright-report/**',
@@ -87,13 +88,16 @@ export default defineConfigWithVueTs(
   // TypeScript + Vue recommended from @vue/eslint-config-typescript
   vueTsConfigs.recommended,
 
+  // Nuxt's page/app entry files are named by route/convention, not component semantics
+  { rules: { 'vue/multi-word-component-names': 'off' } },
+
   // Vitest unit tests
-  { ...pluginVitest.configs.recommended, files: ['src/**/__tests__/*'] },
+  { ...pluginVitest.configs.recommended, files: ['test/{unit,nuxt}/**/*.{test,spec}.ts'] },
 
   // Playwright end-to-end tests
   {
     ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
+    files: ['test/e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },
 
   // Skip Prettier formatting in ESLint to avoid conflicts
