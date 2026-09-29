@@ -1,2 +1,10 @@
 allowBuilds:
   esbuild: true
+
+# vite-plugin-vue-devtools@8.2.1 still pulls these with a vite <=7 peer range.
+# They work with vite 8 in dev; remove once the plugin upgrades them.
+peerDependencyRules:
+  allowedVersions:
+    vite-plugin-inspect>vite: '8'
+    vite-hot-client>vite: '8'
+    vite-dev-rpc>vite: '8'
