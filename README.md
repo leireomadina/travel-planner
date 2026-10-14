@@ -43,6 +43,8 @@ Components, stores, Vue APIs (`ref`, `computed`…) and Nuxt composables are aut
 
 ## Project Setup
 
+You need Node.js `^22.22.3`, `^24.15.0` or `>=26.0.0`, and pnpm (the version is pinned in `package.json` → `packageManager`).
+
 ```sh
 pnpm install
 ```
@@ -78,7 +80,10 @@ pnpm preview
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
+# Watch mode
 pnpm test:unit
+# Single run
+pnpm vitest run
 ```
 
 Vitest runs two projects:
@@ -88,14 +93,14 @@ Vitest runs two projects:
 
 ```sh
 # Runs only one project
-pnpm test:unit --project nuxt
+pnpm vitest run --project nuxt
 ```
 
 ### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
 ```sh
 # Install browsers for the first run
-npx playwright install
+pnpm exec playwright install
 
 # Runs the end-to-end tests (starts the dev server, or reuses one on port 3000)
 pnpm test:e2e
@@ -109,10 +114,13 @@ pnpm test:e2e --debug
 
 Supabase API calls are mocked in the e2e tests, so they don't need a real Supabase project.
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint with [ESLint](https://eslint.org/) and format with [Prettier](https://prettier.io/)
 
 ```sh
+# Lints and fixes what it can
 pnpm lint
+# Formats src/ and test/
+pnpm format
 ```
 
 ### Git hooks
