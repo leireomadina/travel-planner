@@ -10,5 +10,5 @@
 </template>
 
 <script setup lang="ts">
-  import { Plane } from 'lucide-vue-next'
+  import { Plane } from '@lucide/vue'
 </script>
